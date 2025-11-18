@@ -128,7 +128,7 @@ def infer(prompt, negative, scale, samples=4, steps=50, refiner_strength=0.3, se
         gc.collect()
         torch.cuda.empty_cache()
 
-   for i, image in enumerate(images):
+    for i, image in enumerate(images):
         buffered = BytesIO()
         image.save(buffered, format="JPEG")
 
