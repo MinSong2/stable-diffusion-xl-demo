@@ -128,13 +128,15 @@ def infer(prompt, negative, scale, samples=4, steps=50, refiner_strength=0.3, se
         gc.collect()
         torch.cuda.empty_cache()
 
-    for image in images:
+   for i, image in enumerate(images):
         buffered = BytesIO()
         image.save(buffered, format="JPEG")
+
+        image.save("text" + str(i) + ".png")
+        
         img_str = base64.b64encode(buffered.getvalue()).decode("utf-8")
         
         image_b64 = (f"data:image/jpeg;base64,{img_str}")
-        images_b64_list.append(image_b64)
     
     return images_b64_list
     
