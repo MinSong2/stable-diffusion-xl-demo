@@ -49,7 +49,7 @@ if default_num_images < 1:
 share = os.getenv("SHARE", "false").lower() == "true"
 
 print("Loading model", model_key_base)
-pipe = DiffusionPipeline.from_pretrained(model_key_base, torch_dtype=torch.float16, use_safetensors=True, variant="fp16")
+pipe = DiffusionPipeline.from_pretrained(model_key_base)
 
 if enable_lcm:
     pipe.load_lora_weights(lcm_lora_id)
